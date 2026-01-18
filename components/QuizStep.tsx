@@ -58,7 +58,7 @@ const QuizStep: React.FC<QuizStepProps> = ({ step, onNext, currentAnswer }) => {
         <div className="mb-4">
           <img 
             src="https://i.imgur.com/pe5kv4r.png" 
-            alt="Senses Logo" 
+            alt="Protocolo PRAZER FEMININO Logo" 
             className="w-[100px] h-[100px] object-contain"
           />
         </div>

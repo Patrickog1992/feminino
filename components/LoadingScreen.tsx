@@ -61,7 +61,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   return (
     <div className="flex flex-col items-center justify-start min-h-screen px-6 pt-20 pb-8 bg-brand-50 max-w-lg mx-auto w-full">
       <h2 className="text-2xl font-bold text-center text-gray-800 mb-8 animate-pulse">
-        Seu guia sexual personalizado do Senses está pronto! 🔥💦
+        Seu guia sexual personalizado do Protocolo PRAZER FEMININO está pronto! 🔥💦
       </h2>
 
       {/* Progress Bar */}

@@ -146,7 +146,7 @@ export const STEPS: Step[] = [
   {
     id: 'senses_info_2',
     type: 'interstitial',
-    title: 'O Senses oferece práticas físicas e ferramentas emocionais para trazer mais prazer, desejo, satisfação e intimidade para sua vida',
+    title: 'O Protocolo PRAZER FEMININO oferece práticas físicas e ferramentas emocionais para trazer mais prazer, desejo, satisfação e intimidade para sua vida',
     image: 'https://i.imgur.com/eXZ2Dk6.jpeg',
     buttonText: 'Continuar'
   },
@@ -164,7 +164,7 @@ export const STEPS: Step[] = [
   {
     id: 'testimonial_1',
     type: 'interstitial',
-    title: 'Encontrei o Senses no momento perfeito! Eu estava começando a me sentir culpada por não conseguir aproveitar o sexo, mas graças a este protocolo comecei a conhecer meu verdadeiro eu!',
+    title: 'Encontrei o Protocolo PRAZER FEMININO no momento perfeito! Eu estava começando a me sentir culpada por não conseguir aproveitar o sexo, mas graças a este protocolo comecei a conhecer meu verdadeiro eu!',
     subtitle: '– Michelle, 28 anos',
     image: 'https://i.imgur.com/sqYjS4V.png',
     buttonText: 'Continuar'
@@ -288,7 +288,7 @@ export const STEPS: Step[] = [
   {
     id: 'loading_plan',
     type: 'loading',
-    title: 'Seu guia sexual personalizado do Senses está pronto! 🔥💦'
+    title: 'Seu guia sexual personalizado do Protocolo PRAZER FEMININO está pronto! 🔥💦'
   },
   {
     id: 'sales_page',
@@ -307,7 +307,7 @@ export const TESTIMONIALS = [
   {
     name: "Ana Clara, 32",
     img: "https://i.imgur.com/Sza1ZfT.png",
-    text: "Meninas, sério... eu achava que era impossível mudar depois dos 30. O Senses mudou minha vida! 👍",
+    text: "Meninas, sério... eu achava que era impossível mudar depois dos 30. O Protocolo PRAZER FEMININO mudou minha vida! 👍",
     rating: 5
   },
   {
@@ -333,7 +333,7 @@ export const TESTIMONIALS = [
 export const FAQS = [
   {
     question: "Como vou receber o acesso?",
-    answer: "O acesso é imediato! Assim que o pagamento for confirmado, você receberá um e-mail com seu login e senha para acessar a plataforma exclusiva do Senses."
+    answer: "O acesso é imediato! Assim que o pagamento for confirmado, você receberá um e-mail com seu login e senha para acessar a plataforma exclusiva do Protocolo PRAZER FEMININO."
   },
   {
     question: "Preciso de algum equipamento?",
