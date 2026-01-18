@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Check, Star, Gift, ChevronDown, ChevronUp, ShieldCheck } from 'lucide-react';
+import { Check, Star, Gift, ChevronDown, ChevronUp, ShieldCheck, MapPin } from 'lucide-react';
 import { UserAnswers } from '../types';
 import { MOCKUP_IMAGES, TESTIMONIALS, FAQS } from '../constants';
 
@@ -7,10 +7,20 @@ interface SalesPageProps {
   answers: UserAnswers;
 }
 
+const RECENT_NAMES = [
+  "Mariana S.", "Julia C.", "Fernanda M.", "Patrícia L.", "Ana B.", 
+  "Bruna K.", "Camila R.", "Larissa T.", "Amanda P.", "Beatriz G.", 
+  "Carla D.", "Daniela F.", "Eduarda S.", "Fabiana M.", "Gabriela A.",
+  "Renata L.", "Vanessa C.", "Jessica O.", "Leticia P.", "Tatiane B."
+];
+
 const SalesPage: React.FC<SalesPageProps> = ({ answers }) => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [timeLeft, setTimeLeft] = useState(600); // 10 minutes in seconds
   const testimonialRef = useRef<HTMLDivElement>(null);
+  
+  // Sales Notification State
+  const [notification, setNotification] = useState({ name: '', visible: false });
 
   // Timer logic
   useEffect(() => {
@@ -41,6 +51,30 @@ const SalesPage: React.FC<SalesPageProps> = ({ answers }) => {
     }, 4000); 
 
     return () => clearInterval(scrollInterval);
+  }, []);
+
+  // Notification Logic
+  useEffect(() => {
+    const showNewNotification = () => {
+      const randomName = RECENT_NAMES[Math.floor(Math.random() * RECENT_NAMES.length)];
+      setNotification({ name: randomName, visible: true });
+
+      // Hide after 4 seconds
+      setTimeout(() => {
+        setNotification(prev => ({ ...prev, visible: false }));
+      }, 4000);
+    };
+
+    // Initial delay of 5 seconds
+    const initialTimeout = setTimeout(showNewNotification, 5000);
+
+    // Repeat every 12 seconds
+    const interval = setInterval(showNewNotification, 12000);
+
+    return () => {
+      clearTimeout(initialTimeout);
+      clearInterval(interval);
+    };
   }, []);
 
   // Helper to generate personalized text based on answers
@@ -118,10 +152,25 @@ const SalesPage: React.FC<SalesPageProps> = ({ answers }) => {
   }, []);
 
   return (
-    <div className="bg-white min-h-screen font-poppins text-gray-800 pb-20 animate-fade-in pt-0">
+    <div className="bg-white min-h-screen font-poppins text-gray-800 pb-20 animate-fade-in pt-0 relative">
       
+      {/* SALES NOTIFICATION POPUP - SMALLER SIZE */}
+      <div 
+        className={`fixed top-2 right-2 md:top-4 md:right-4 z-50 transition-all duration-700 transform ${notification.visible ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 pointer-events-none'}`}
+      >
+         <div className="bg-white/95 backdrop-blur-sm rounded-md shadow-lg border-l-2 border-green-500 p-1.5 flex items-center gap-2 max-w-[190px] md:max-w-[220px] ring-1 ring-black/5">
+            <div className="bg-green-100 rounded-full p-1 shrink-0 animate-pulse">
+               <Check size={10} className="text-green-600" strokeWidth={2.5} />
+            </div>
+            <div className="text-[10px] leading-tight">
+               <span className="font-bold text-gray-800 block truncate">{notification.name}</span>
+               <span className="text-gray-500">acabou de receber o <span className="font-bold text-brand-600">PROTOCOLO</span></span>
+            </div>
+         </div>
+      </div>
+
       {/* COUNTDOWN HEADER - Changed to relative (static in flow) so it scrolls away */}
-      <div className="bg-red-600 text-white text-center py-3 px-4 relative z-50 shadow-md">
+      <div className="bg-red-600 text-white text-center py-3 px-4 relative z-40 shadow-md">
         <p className="font-bold text-sm md:text-base">
           Você acabou de ganhar 70% de desconto que expira em : <span className="text-yellow-300 font-mono text-lg">{formatTime(timeLeft)}</span>
         </p>
@@ -321,9 +370,12 @@ const SalesPage: React.FC<SalesPageProps> = ({ answers }) => {
           <p className="text-sm text-gray-500 mb-6">Pagamento único • Acesso vitalício</p>
           
           {/* GREEN PULSING BUTTON */}
-          <button className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-full shadow-lg text-xl uppercase tracking-wider animate-pulse">
+          <a 
+            href="https://go.perfectpay.com.br/PPU38CQ67QA"
+            className="block w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-full shadow-lg text-xl uppercase tracking-wider animate-pulse transition-colors"
+          >
             QUERO O PROTOCOLO AGORA !
-          </button>
+          </a>
         </div>
 
         {/* Guarantee - FULL TEXT RESTORED */}
@@ -394,9 +446,12 @@ const SalesPage: React.FC<SalesPageProps> = ({ answers }) => {
           </div>
 
           {/* GREEN PULSING BUTTON */}
-          <button className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-full shadow-lg text-xl uppercase tracking-wider mt-8 animate-pulse">
+          <a 
+            href="https://go.perfectpay.com.br/PPU38CQ67QA"
+            className="block w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-full shadow-lg text-xl uppercase tracking-wider mt-8 animate-pulse transition-colors text-center"
+          >
             QUERO COMEÇAR AGORA
-          </button>
+          </a>
         </div>
 
         {/* FAQ */}
