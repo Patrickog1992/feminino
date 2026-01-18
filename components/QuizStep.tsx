@@ -60,6 +60,9 @@ const QuizStep: React.FC<QuizStepProps> = ({ step, onNext, currentAnswer }) => {
             src="https://i.imgur.com/pe5kv4r.png" 
             alt="Protocolo PRAZER FEMININO Logo" 
             className="w-[100px] h-[100px] object-contain"
+            // @ts-ignore
+            fetchPriority="high"
+            loading="eager"
           />
         </div>
 
